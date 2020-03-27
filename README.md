@@ -1,3 +1,3 @@
 # pp-web
 
-Projekt PP - Aplikacja webowa
+PP Projekt - Aplikacja webowa
