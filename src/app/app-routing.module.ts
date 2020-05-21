@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent } from './home/home.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import {JoinComponent } from './join/join.component';
+import { SignInComponent } from './login/sign-in.component';
+import {JoinComponent } from './register/join.component';
 import { YourAirComponent } from './your-air/your-air.component';
 
 

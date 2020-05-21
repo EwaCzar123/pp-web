@@ -6,22 +6,6 @@ body{
     font-family: 'Nunito', sans-serif;
     
 }
-.content{
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-.blurb h2{
-    color:#C26455;
-    font-weight: 100;
-    font-size: 2.5rem;
-}
-
-.blurb p{
-    color:white;
-    font-weight: 100;
-    font-size: 1.125rem;
-    line-height: 2;
-}
 
 #mainNavbar .nav-link{
     color:white;
@@ -36,25 +20,9 @@ font-size: 1.5rem;
 font-weight: 100;
 }
 
-.grey{
-    color:white;
-}
-
-#headingGroup span{
-    color:#C26455;
-}
-
-#headingGroup h1{
-    font-weight: 100;
-    font-size: 4rem;
-}
 .navbar{
     background: #F3C985;
 }
-
-@media (max-width:1200px){
-    #headingGroup h1{
-        font-weight: 100;
-        font-size: 3rem;
-    }
+.zawartosc{
+    margin:50px auto;
 }
