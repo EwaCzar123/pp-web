@@ -9,5 +9,5 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'angular-tour-of-heroes';
 
-  constructor (private http:HttpClient){}
+  constructor(private http: HttpClient) {}
 }
