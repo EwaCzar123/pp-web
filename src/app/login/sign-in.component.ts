@@ -1,12 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { SignInService } from './sign-in.service';
+import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { SignInService } from "./sign-in.service";
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
+  selector: "app-sign-in",
+  templateUrl: "./sign-in.component.html",
+  styleUrls: ["./sign-in.component.css"],
 })
+export class SignInComponent implements OnInit {
+  isLoading = false;
+
+  loginForm = new FormGroup({
+    login: new FormControl(""),
+    password: new FormControl(""),
+  });
+  ngOnInit(): void {}
+  onSubmit() {
+    console.warn(this.loginForm.value);
+  }
+}
+/*
 export class SignInComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
@@ -56,3 +70,4 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {}
 }
+*/

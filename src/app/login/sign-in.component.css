@@ -1,11 +1,14 @@
-div{
-    color:white;
-    font-size: 20px;
+div {
+  color: white;
+  font-size: 20px;
 }
-p{
-    color: red;
+p {
+  color: red;
 }
-.row{
-    text-align: center;
-    margin:70px 400px;
+.row {
+  text-align: center;
+  margin: 70px 400px;
+}
+.row label {
+  width: 300px;
 }
