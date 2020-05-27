@@ -1,6 +1,5 @@
 <!--
-<h1 style="text-align: center; color: #F3C985; margin:100px auto 10px auto ;">Logowanie</h1>
-<p style="color: white; text-align:center;">Nie masz jeszcze konta? <a style="color:#C56455" href="/join">Zarejestruj Się!</a></p>
+
 <div class="row">
     <div class="col-xs-12 col-md-12 col-md-offset-12" >
         <div class="alert alert-danger" *ngIf="error">
@@ -44,14 +43,48 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-12 col-md-offset-12">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" ngNativeValidate>
       <div class="form-group" style="text-align: center;">
         <label for="username">Enter username</label>
-        <input type="text" formControlName="login" id="username" />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          class="form-control"
+          #loginFiled="ngModel"
+          ngModel
+          required
+        />
       </div>
+      <div
+        [hidden]="loginFiled.valid || loginFiled.untouched"
+        class="alert alert-warning"
+        role="alert"
+        style="color: #d35a47; text-align: center;"
+      >
+        Enter login
+      </div>
+
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" formControlName="haslo" id="password" />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          maxlength="20"
+          class="form-control"
+          #passwordFiled="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <div
+        [hidden]="passwordFiled.valid || passwordFiled.untouched"
+        class="alert alert-warning"
+        role="alert"
+        style="color: #d35a47; text-align: center;"
+      >
+        Enter password
       </div>
       <button
         type="submit"
@@ -63,3 +96,4 @@
     </form>
   </div>
 </div>
+<h3>{{ userSettings | json }}</h3>
