@@ -13,16 +13,14 @@ p {
   width: 300px;
 }
 .row input {
-  width: 500px;
+  width: 400px;
   border-bottom-color: #c26455;
   border-bottom-width: 2px;
   background-color: #fbefdb;
   display: inline;
 }
-.ng-valid[required],
-.ng-valid.required {
-  border-left: 5px solid #42a948; /* green */
-}
-.ng-invalid:not(form) {
-  border-left: 5px solid #a94442; /* red */
+
+.ErrorMessage {
+  color: #d35a47;
+  font-size: smaller;
 }

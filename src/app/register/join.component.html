@@ -1,152 +1,175 @@
-<h1 style="text-align: center; color: #f3c985; margin: 100px auto 10px auto;">
-  REGISTRATION
-</h1>
+<section class="register-block">
+  <h1 style="text-align: center; color: #f3c985; margin: 100px auto 10px auto;">
+    REGISTRATION
+  </h1>
 
-<p style="color: white; text-align: center;">
-  Do you already have an account?
-  <a style="color: #c56455;" href="/sign-in"> Sign In!</a>
-</p>
+  <p style="color: white; text-align: center;">
+    Do you already have an account?
+    <a style="color: #c56455;" href="/sign-in"> Sign In!</a>
+  </p>
 
-<div class="row">
-  <div class="col-xs-12 col-md-12 col-md-offset-12">
-    <form
-      #registerForm="ngForm"
-      (ngSubmit)="onSubmit(registerForm)"
-      ngNativeValidate
-    >
-      <div class="form-group" style="text-align: center;">
-        <label for="firstName">First name</label>
-        <input
-          type="text"
-          name="firstName"
-          id="firstName"
-          required
-          class="form-control"
-          #nameFiled="ngModel"
-          [(ngModel)]="UserRegistrationData.firstName"
-        />
-        <div
-          [hidden]="nameFiled.valid || nameFiled.untouched"
-          class="alert alert-warning"
-          role="alert"
-          style="color: #d35a47; text-align: center;"
-        >
-          Enter first name
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-md-offset-12">
+      <form
+        class="login-form form"
+        method="post"
+        [formGroup]="insertForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="form-group" style="text-align: center;">
+          <label for="firstName">First name</label>
+          <input
+            formControlName="firstName"
+            id="firstName"
+            type="text"
+            placeholder=""
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="firstName.touched && firstName.errors"
+            role="alert"
+            class="errorMessage"
+          >
+            <span *ngIf="firstName.hasError('required')"
+              >First name is required</span
+            >
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="lastName">Last name</label>
-        <input
-          type="text"
-          name="lastName"
-          id="lastName"
-          required
-          class="form-control"
-          #lastnameFiled="ngModel"
-          [(ngModel)]="UserRegistrationData.lastName"
-        />
-        <div
-          [hidden]="lastnameFiled.valid || lastnameFiled.untouched"
-          class="alert alert-warning"
-          role="alert"
-          style="color: #d35a47; text-align: center;"
-        >
-          Enter last name
+        <div class="form-group">
+          <label for="lastName">Last name</label>
+          <input
+            type="text"
+            formControlName="lastName"
+            id="lastName"
+            required
+            class="form-control"
+            placeholder=""
+          />
+          <div *ngIf="lastName.touched && lastName.errors" class="errorMessage">
+            <span *ngIf="lastName.hasError('required')"
+              >Last name is required</span
+            >
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="birthDate">Date of birth </label>
-        <input
-          type="date"
-          name="birthDate"
-          id="birthDate"
-          required
-          class="form-control"
-          #birthDateFiled="ngModel"
-          [(ngModel)]="UserRegistrationData.birthDate"
-        />
-      </div>
-      <div
-        [hidden]="birthDateFiled.valid || birthDateFiled.untouched"
-        class="alert alert-warning"
-        role="alert"
-        style="color: #d35a47; text-align: center;"
-      >
-        Enter the date of birth
-      </div>
-      <div class="form-group">
-        <label for="username">Username </label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          required
-          class="form-control"
-          #usernameFiled="ngModel"
-          [(ngModel)]="UserRegistrationData.username"
-        />
-      </div>
-      <div
-        [hidden]="usernameFiled.valid || usernameFiled.untouched"
-        class="alert alert-warning"
-        role="alert"
-        style="color: #d35a47; text-align: center;"
-      >
-        Enter username
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          required
-          minlength="8"
-          maxlength="20"
-          class="form-control"
-          #passwordFiled="ngModel"
-          [(ngModel)]="UserRegistrationData.password"
-        />
-      </div>
-      <div
-        [hidden]="passwordFiled.valid || passwordFiled.untouched"
-        class="alert alert-warning"
-        role="alert"
-        style="color: #d35a47; text-align: center;"
-      >
-        Enter password
-      </div>
-      <div class="form-group">
-        <label for="password2">Repeat password</label>
-        <input
-          type="password"
-          name="password"
-          id="password2"
-          minlength="8"
-          maxlength="20"
-          required
-          class="form-control"
-          #password2Filed="ngModel"
-          [(ngModel)]="UserRegistrationData.password"
-        />
-      </div>
-      <div
-        [hidden]="password2Filed.valid || password2Filed.untouched"
-        class="alert alert-warning"
-        role="alert"
-        style="color: #d35a47; text-align: center;"
-      >
-        Enter password
-      </div>
-      <button
-        type="submit"
-        class="btn btn-secondary"
-        [disabled]="!registerForm.valid"
-      >
-        Register
-      </button>
-    </form>
+        <div class="form-group">
+          <label for="birthDate">Date of birth </label>
+          <input
+            type="date"
+            formControlName="birthDate"
+            id="birthDate"
+            required
+            class="form-control"
+            placeholder=""
+          />
+          <div
+            *ngIf="birthDate.touched && birthDate.errors"
+            class="errorMessage"
+          >
+            <span *ngIf="birthDate.hasError('required')"
+              >Date of birth is required</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username </label>
+          <input
+            type="text"
+            formControlName="username"
+            id="username"
+            required
+            class="form-control"
+            placeholder=""
+          />
+          <div *ngIf="username.touched && username.errors" class="errorMessage">
+            <span *ngIf="username.hasError('required')"
+              >Username is requireds</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            id="password"
+            required
+            minlength="8"
+            maxlength="20"
+            class="form-control"
+            placeholder=""
+          />
+          <div *ngIf="password.touched && password.errors" class="errorMessage">
+            <span *ngIf="password.hasError('required')"
+              >Password is requireds</span
+            >
+            <span *ngIf="password.hasError('maxLength')"
+              >Only 20 characters allowed for password</span
+            >
+            <span *ngIf="password.hasError('minLength')"
+              >At least 8 characters needed for password</span
+            >
+            <span *ngIf="password.hasError('pattern')"
+              >Password need between 8-20 characters wich contain at least one
+              lowercase letter, one uppercase letter, one numeric digit and one
+              special character.</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cpassword">Repeat password</label>
+          <input
+            type="password"
+            formControlName="cpassword"
+            id="cpassword"
+            minlength="8"
+            maxlength="20"
+            required
+            class="form-control"
+            placeholder=""
+          />
+          <div
+            *ngIf="cpassword.touched && cpassword.errors"
+            class="errorMessage"
+          >
+            <span *ngIf="cpassword.hasError('required')"
+              >Confirm password is required</span
+            >
+            <span *ngIf="cpassword.hasError('mustMatch')"
+              >Password must match</span
+            >
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="insertForm.invalid"
+          class="btn btn-secondary"
+        >
+          Register
+        </button>
+      </form>
+    </div>
   </div>
-</div>
-<h3>{{ UserRegistrationData | json }}</h3>
+</section>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left" style="color: black; text-align: center;">
+      Oops! Registration failed
+    </h4>
+  </div>
+  <div
+    class="modal-body text-center"
+    style="background-color: #b17304; border-color: #b17304;"
+  >
+    <p>
+      {{ modalMessage }}
+    </p>
+    <p>The <strong>username</strong> you provide is already taken.</p>
+  </div>
+</ng-template>
