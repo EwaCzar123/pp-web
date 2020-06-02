@@ -84,6 +84,7 @@ export class DataService {
             localStorage.setItem("username", result.username);
             localStorage.setItem("expiration", result.expiration);
             localStorage.setItem("role", result.role);
+            this.username.next(localStorage.getItem("username"));
           }
           return result;
         })
@@ -100,7 +101,10 @@ export class DataService {
     console.log("Logged out successfully");
   }
   checkLoginStatus(): boolean {
-    return false;
+    var loginCookie = localStorage.getItem("loginStatus");
+    if (loginCookie == "1") {
+      return true;
+    } else return false;
   }
   get isLoggesIn() {
     return this.loginStatus.asObservable();
