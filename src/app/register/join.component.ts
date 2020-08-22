@@ -77,7 +77,7 @@ export class JoinComponent implements OnInit {
       .register(
         userDetails.firstName,
         userDetails.lastName,
-        userDetails.birthDate,
+        userDetails.birthDate.split('-').join('.'),
         userDetails.password,
         userDetails.username,
         userDetails.role

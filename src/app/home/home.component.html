@@ -1,3 +1,4 @@
+<!--
 <section>
   <table class="table table-hover table-dark">
     <thead>
@@ -28,3 +29,155 @@
   </table>
   <button id="edit" type="button" class="btn btn-dark">Edit list</button>
 </section>
+-->
+
+
+<!--
+<div class="container-fluid">
+  <button class="btn btn-warning mb-3 float-right text-upercace">
+    <i class="fa fa-plus"></i>Add area
+  </button>
+  <table class="table table-bordered row-border hover" style="width: 100%;">
+    <thead class="text-center thead-dark">
+      <tr>
+        <th>LATITUDE</th>
+        <th>LONGTITUDE</th>
+        <th>RADIUS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <div class="btn-group mt-2" role="group">
+            <button type="button" class="btn btn=success">
+              <i class="fa fa-list"></i>
+            </button>
+            <button type="button" class="btn btn=success">
+              <i class="fa fa-pencil-square-o"></i>
+            </button>
+            <button type="button" class="btn btn=success">
+              <i class="fa fa-trash-o"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #editTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">EDIT AREA</h4>
+    <button type="button" class="close pull-right" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <p class="list-group-item active text-center text-uppercase"></p>
+    <form>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="radius"
+                ><i class="fa fa-pencil-square-o"></i
+              ></span>
+            </div>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="radius"
+            />
+          </div>
+          <div class="errorMessage">
+            <span>Radius is required.</span>
+            <span>Negative radius not allowed</span>
+            <span>Max radius allowes is 10000</span>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <button>class="btn btn-primary btn-block">UPDATE</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</ng-template>
+-->
+<!--
+<div class="container-fluid">
+
+  <button class="btn btn-warning mb-3 float-right text-uppercase"  (click)="onAddArea()"><i class="fa fa-plus"></i> Add Area</button>
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered row-border hover" style="width:100%">
+    <thead class="text-center thead-dark">
+      <tr>
+        <th>LATITUDE</th>
+        <th>LONGITUDE</th>
+        <th>RADIUS</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let area of areas" class="text-center">
+        <td>{{area.latitude}}</td>
+        <td>{{area.longitude }}</td>
+        <td>{{area.radius}}</td>
+        <td>
+          <div class="btn-group mt-2" role="group">
+            <button type="button" class="btn btn-success" (click)="onSelect(area)"><i class="fas fa-list"></i></button>
+            <button type="button" class="btn btn-primary"  (click)="onUpdateModal(area)"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" (click)="onDelete(area)"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+-->
+<!-- ADD AREA MODAL START-->
+<!--
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title">ADD NEW AREA</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <p class="list-group-item active text-center text-uppercase">{{modalMessage}}</p>
+    <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="areaLatitude"><i class="fa fa-pencil-square-o"></i></span>
+            </div>
+            <input type="number" id="latitude" formControlName="latitude" class="form-control" placeholder="eg: 30.0 " aria-label="latitude" aria-describedby="areaLatitude">
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="areaLongitude"><i class="fa fa-pencil-square-o"></i></span>
+            </div>
+            <input type="number" id="longitude" formControlName="longitude" class="form-control" placeholder="eg: 30.0 " aria-label="longitude" aria-describedby="areaLongitude">
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="areaRadius"><i class="fa fa-pencil-square-o"></i></span>
+            </div>
+            <input type="number" id="radius" formControlName="radius" class="form-control" placeholder="eg: 30.0 " aria-label="radius" aria-describedby="areaRadius">
+          </div>
+        </li>
+        <li class="list-group-item">
+          <button [disabled]="insertForm.invalid"  class="btn btn-primary btn-block">ADD</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</ng-template>
+-->

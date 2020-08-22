@@ -8,6 +8,7 @@ import { YourAirComponent } from './your-air/your-air.component';
 
 const routes: Routes = [
 {path: '', component: YourAirComponent},
+{path:'areas',loadChildren:()=>import('./areas/areas.module').then(m=>m.AreasModule)},
 {path: 'home', component: HomeComponent},
 {path: 'sign-in', component: SignInComponent},
 {path: 'join', component: JoinComponent},

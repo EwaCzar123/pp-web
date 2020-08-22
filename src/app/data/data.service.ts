@@ -11,6 +11,7 @@ import {
 import { catchError, retry, map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import * as jw_decode from "jwt-decode";
 /*
 interface SignInResponseData {
   idToken: String;
@@ -64,7 +65,7 @@ export class DataService {
   }
   //Login method
   login(username: string, password: string) {
-    console.log({ username, password });
+    //console.log({ username, password });
     return this.http
       .post<any>(
         "https://polsl-pp-server.herokuapp.com/api/authenticate/login",
@@ -101,11 +102,41 @@ export class DataService {
     console.log("Logged out successfully");
   }
   checkLoginStatus(): boolean {
+
     var loginCookie = localStorage.getItem("loginStatus");
-    if (loginCookie == "1") {
-      return true;
-    } else return false;
+
+    if (loginCookie == "1") 
+    {
+      if(localStorage.getItem('jwt')==null||localStorage.getItem('jwt')==undefined)
+      {
+        return false;
+      }
+      const token=localStorage.getItem('jwt');
+      const decoded=jw_decode(token);
+      
+      //Check if the cookie is valid
+      if(decoded.exp==undefined)
+      {
+        return false;
+      }
+
+      //Get Current Date Time
+      const date = new Date(0);
+
+      //Convert Exp Time to UTP
+      let tokenExDate=date.setUTCSeconds(decoded.exp);
+
+      //If value of token time grater than
+      if(tokenExDate.valueOf()>new Date().valueOf())
+      {
+        return true;
+      }
+
+      return false;
+    } 
+    return false;
   }
+
   get isLoggesIn() {
     return this.loginStatus.asObservable();
   }
