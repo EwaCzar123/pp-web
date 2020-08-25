@@ -5,13 +5,14 @@ import { Area } from 'src/app/interfaces/area';
 import { Observable, Subject } from 'rxjs';
 import {DataTableDirective} from 'angular-datatables';
 import { AreaService } from 'src/app/data/area.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-area-list',
   templateUrl: './area-list.component.html',
   styleUrls: ['./area-list.component.css']
 })
-export class AreaListComponent implements OnInit, OnDestroy {
+export class AreaListComponent implements OnInit{
 
   //For the FormControl - Adding areas
   insertForm: FormGroup;
@@ -47,7 +48,8 @@ export class AreaListComponent implements OnInit, OnDestroy {
   constructor(private areaservice:AreaService,
               private modalService:BsModalService,
               private fb:FormBuilder,
-              private chRef : ChangeDetectorRef) { }
+              private chRef : ChangeDetectorRef,
+              private router: Router) { }
   
    onAddArea()
    {
@@ -140,6 +142,13 @@ export class AreaListComponent implements OnInit, OnDestroy {
      )
    }
 
+   onSelect(area:Area):void
+   {
+    this.selectedArea=area;
+    //to navigate user to area-details
+    this.router.navigateByUrl("/areas/"+area.id);
+   }
+
   ngOnInit(): void {
     this.dtOptions={
       pagingType: 'full_numbers',
@@ -152,12 +161,13 @@ export class AreaListComponent implements OnInit, OnDestroy {
     this.areas$.subscribe(result=>
     {
       this.areas=result;
-
+      
       this.chRef.detectChanges();
       
       this.dtTrigger.next();
     });
 
+    
     //Modal Message
     this.modalMessage="All Fields Are Mandatory";
 

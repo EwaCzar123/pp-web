@@ -8,14 +8,12 @@ import { AuthGuardService } from '../guards/auth-guard.service';
 const routes: Routes = [
   {path:'', component: AreaListComponent, canActivate:[AuthGuardService]},
   {path: 'area-list', component: AreaListComponent, canActivate:[AuthGuardService]},
-  {path: 'id', component:AreaDetailsComponent, canActivate:[AuthGuardService]}
+  {path: ':id', component:AreaDetailsComponent, canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers : [
-    AuthGuardService
-  ]
+
 })
 export class AreasRoutingModule { }

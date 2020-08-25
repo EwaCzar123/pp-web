@@ -9,6 +9,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { AuthGuardService } from '../guards/auth-guard.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../helpers/jwt.interceptor';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { JwtInterceptor } from '../helpers/jwt.interceptor';
     AreasRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    GoogleMapsModule
   ],
   providers: [
     AuthGuardService,

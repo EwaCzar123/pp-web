@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Area } from "../interfaces/area";
 import { User } from "../interfaces/user";
+import {DependentArea} from "../interfaces/dependentArea";
 import { Response } from "../interfaces/response";
 import { shareReplay, flatMap, first, map } from "rxjs/operators";
 
@@ -13,32 +14,36 @@ export class AreaService {
   constructor(private http: HttpClient) {}
   id: string;
   private getListUrl: string =
-    "https://polsl-pp-server.herokuapp.com/api/webusers/details";
+    "https://pp-server.herokuapp.com/api/areas";
   private addAreaUrl: string =
-    "https://polsl-pp-server.herokuapp.com/api/webusers/area";
+    "https://pp-server.herokuapp.com/api/areas";
   private deleteAreaUrl: string =
-    "https://polsl-pp-server.herokuapp.com/api//webusers/area/";
+    "https://pp-server.herokuapp.com/api/areas";
   private updateAreaRadiusUrl: string =
-    "https://polsl-pp-server.herokuapp.com/api/webusers/";
+    "https://pp-server.herokuapp.com/api/areas";
+    private getDependentAreasUrl: string =
+    "https://pp-server.herokuapp.com/api/notifications";
 
   //Will hold all areas
   private area$: Observable<Area[]>;
   private Response$: Observable<Response>;
 
   getAreas(): Observable<Area[]> {
-    if (!this.area$) {
-      this.area$ = this.http
-        .get<Response>(this.getListUrl)
-        .pipe(map((response: Response) => response.areas));
-    }
-    return this.area$;
+
+   // return this.area$=this.http.get<Area[]>(this.getListUrl);
+   if (!this.area$) 
+   {
+       this.area$ = this.http.get<Area[]>(this.getListUrl).pipe(shareReplay());
+   }
+
+   return this.area$;
   }
 
   //Get Area by ID
   getAreaById(id: number): Observable<Area> {
     return this.getAreas().pipe(
-      flatMap((result) => result),
-      first((area) => area.id == id)
+      flatMap(result => result),
+      first(area => area.id == id)
     );
   }
 
@@ -49,14 +54,23 @@ export class AreaService {
   //Update area
   updateArea(id: number, radius: number): Observable<Area> {
     return this.http.patch<Area>(
-      this.updateAreaRadiusUrl + id + "/" + radius,
-      radius
+      this.updateAreaRadiusUrl,
+      {id,radius}
     );
   }
 
   //Delete area
   deleteArea(id: number): Observable<any> {
-    return this.http.delete(this.deleteAreaUrl + id);
+    var httpParams= new HttpParams().set('id', id.toString());
+    let options = {params: httpParams}
+    return this.http.delete(this.deleteAreaUrl, options);
+  }
+
+  //getting reported areas 
+  getDependentAreas(id:number): Observable<DependentArea[]>{
+    var httpParams= new HttpParams().set('areaId', id.toString());
+    let options = {params: httpParams}
+    return this.http.get<DependentArea[]>(this.getDependentAreasUrl,options);
   }
 
   clearCache() {

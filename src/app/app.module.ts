@@ -15,7 +15,7 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { DataTablesModule } from 'angular-datatables';
 import { JwtInterceptor} from './helpers/jwt.interceptor';
 import { AuthGuardService } from './guards/auth-guard.service';
-
+import {GoogleMapsModule} from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +34,8 @@ import { AuthGuardService } from './guards/auth-guard.service';
     HttpClientModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    DataTablesModule
+    DataTablesModule,
+    GoogleMapsModule
   ],
   providers: [
      AuthGuardService,

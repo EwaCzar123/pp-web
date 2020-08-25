@@ -36,17 +36,19 @@ export class DataService {
     lastName: string,
     birthDate: string,
     password: string,
+    confirmPassword: string,
     username: string,
     role: string
   ) {
     return this.http
       .post<any>(
-        "https://polsl-pp-server.herokuapp.com/api/authenticate/register",
+        "https://pp-server.herokuapp.com/api/users/register",
         {
           firstName,
           lastName,
           birthDate,
           password,
+          confirmPassword,
           username,
           role,
         }
@@ -68,7 +70,7 @@ export class DataService {
     //console.log({ username, password });
     return this.http
       .post<any>(
-        "https://polsl-pp-server.herokuapp.com/api/authenticate/login",
+        "https://pp-server.herokuapp.com/api/login",
         { username, password }
       )
       .pipe(
