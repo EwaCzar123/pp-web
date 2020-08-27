@@ -67,8 +67,8 @@ export class AreaService {
   }
 
   //getting reported areas 
-  getDependentAreas(id:number): Observable<DependentArea[]>{
-    var httpParams= new HttpParams().set('areaId', id.toString());
+  getDependentAreas(areaId:number): Observable<DependentArea[]>{
+    var httpParams= new HttpParams().set('areaId', areaId.toString());
     let options = {params: httpParams}
     return this.http.get<DependentArea[]>(this.getDependentAreasUrl,options);
   }

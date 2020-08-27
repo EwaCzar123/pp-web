@@ -1,3 +1,26 @@
-<google-map width="800" height="600" [center]="position">
-    <map-marker [position]="position" [label]="label" [title]="title"></map-marker>
+<google-map width="1000" height="550" [center]="position" >
+  <map-marker [position]="position" [label]="label" [title]="title" class="main"></map-marker>
+
+    <map-marker
+    *ngFor="let position of dependentPosition"
+    [position]="position"
+    (mapClick)="openInfo(position)"
+    > </map-marker>
 </google-map>
+
+<ng-template #notificationTemplate> 
+    <div class="modal-dialog" role="document">
+        <div class="modal-header">
+          <h5 class="modal-title">NOTIFICATION IN DETAILS</h5>
+        </div>
+        <div class="modal-body">
+          <p> The notification has been submitted for the location:</p>
+          <p> latitude: {{selectedArea.latitude}}</p>
+          <p>longitude: {{selectedArea.longitude}} </p>
+          <p></p>
+          
+          <p>Description: {{selectedArea.description}} </p>
+          <button type="button" class="btn btn-5">SEE PHOTO</button>
+        </div>
+    </div>
+</ng-template>

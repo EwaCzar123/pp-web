@@ -10,7 +10,7 @@ import { AuthGuardService } from '../guards/auth-guard.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../helpers/jwt.interceptor';
 import {GoogleMapsModule} from '@angular/google-maps';
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [AreaListComponent, AreaDetailsComponent],
@@ -20,7 +20,8 @@ import {GoogleMapsModule} from '@angular/google-maps';
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    AgmCoreModule
   ],
   providers: [
     AuthGuardService,

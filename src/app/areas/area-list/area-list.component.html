@@ -1,6 +1,5 @@
-<div class="container-fluid">
 
-  <button class="btn btn-warning mb-3 float-right text-uppercase" (click)="onAddArea()" >Add Area</button>
+<div class="container-fluid">
   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered row-border hover" style="width:100%">
     <thead class="text-center thead-dark">
       <tr>
@@ -17,14 +16,15 @@
         <td>{{area.radius}}</td>
         <td>
           <div class="btn-group mt-2" role="group">
-            <button type="button" class="btn btn-success" (click)="onSelect(area)">SEE</button>
-            <button type="button" class="btn btn-primary" (click)="onUpdateModal(area)" >UPDATE</button>
-            <button type="button" class="btn btn-danger" (click)="onDelete(area)">DELETE</button>
+            <button type="button" class="btn btn-1" (click)="onSelect(area)">SEE</button>
+            <button type="button" class="btn btn-2" (click)="onUpdateModal(area)" >UPDATE</button>
+            <button type="button" class="btn btn-3" (click)="onDelete(area)">DELETE</button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+  <button class="btn btn-4 mb-6  text-uppercase" (click)="onAddArea()" >Add Area</button>
 </div>
 
 <!-- ADD AREA MODAL START-->
@@ -37,7 +37,7 @@
     </button>
   </div>
   <div class="modal-body text-center">
-    <p class="list-group-item active text-center text-uppercase">{{modalMessage}}</p>
+    <p class="list-group-item active text-center text-uppercase info">{{modalMessage}}</p>
     <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
       <ul class="list-group">
         <li class="list-group-item" >
@@ -77,7 +77,7 @@
           </div>
         </li>
         <li class="list-group-item">
-          <button [disabled]="insertForm.invalid"  class="btn btn-primary btn-block">ADD</button>
+          <button [disabled]="insertForm.invalid"  class="btn btn-primary btn-block info">ADD</button>
         </li>
       </ul>
     </form>
@@ -88,12 +88,12 @@
   <ng-template #editTemplate>
     <div class="modal-header">
       <h4 class="modal-title">EDIT AREA</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <button type="button" class="close pull-right info" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body text-center">
-      <p class="list-group-item active text-center text-uppercase">
+      <p class="list-group-item active text-center text-uppercase info">
         Enter selected radius</p>
       <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
         <ul class="list-group">
@@ -128,7 +128,7 @@
             </div>
           </li>
           <li class="list-group-item">
-            <button [disabled]="updateForm.invalid"class="btn btn-primary btn-block">UPDATE</button>
+            <button [disabled]="updateForm.invalid"class="btn btn-primary btn-block info ">UPDATE</button>
           </li>
         </ul>
       </form>

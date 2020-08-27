@@ -1,0 +1,30 @@
+.container-fluid{
+    margin-top: 80px 
+}
+.info{
+ background: #073b4c;
+ border-bottom-color:  #073b4c;
+}
+.btn-1{
+    border-bottom-color: #c38e70;
+    background: #c38e70;
+    color: white;
+}
+.btn-2{
+    border-bottom-color: #bc6c25;
+    background: #bc6c25;
+    color: white;
+}
+.btn-3{
+    border-bottom-color: #774936;
+    background: #774936;
+    color: white;
+}
+
+.btn-4{
+    background: #e07a5f;
+    color: white;
+   margin: 25px 7px;
+    display: inline;
+    width: 300px;
+}

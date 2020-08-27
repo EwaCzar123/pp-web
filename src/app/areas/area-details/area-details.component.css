@@ -1,0 +1,18 @@
+google-map{
+    position: fixed;
+    top: 10%;
+    left: 12%;
+}
+.modal-header{
+    background-color: #a5a58d;
+    color: white;
+}
+.btn-5{
+    background: #a5a58d;
+    color: white;
+    width: 100%;
+}
+h5{
+    display:inline-block;
+ 
+}
